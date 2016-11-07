@@ -21,23 +21,22 @@ public class EnemyShipTesting {
 
 	public static void main(String[] args) {
 
-		EnemyShip theEnemy = null;
+		EnemyShipFactory shipFactory = new EnemyShipFactory();
 
+		EnemyShip theEnemy = null;
 		Scanner userInput = new Scanner(System.in);
-		String enemyShipOption = "";
-		System.out.println("What type of ship (U / R): ");
+		System.out.print("What type of ship (U / R / B): ");
 
 		if (userInput.hasNextLine()) {
-			enemyShipOption = userInput.nextLine();
+			String typeOfShip = userInput.nextLine();
+			theEnemy = shipFactory.makeEnemyShip(typeOfShip);
 		}
 
-		if (enemyShipOption.equals("U")){
-			theEnemy = new UFOEnemyShip();
-		} else if (enemyShipOption.equals("R")) {
-			theEnemy = new RocketEnemyShip();
-		}
+		if (theEnemy != null) {
+			doStuffEnemy(theEnemy);
+		} else System.out.println("Enter a U, R or B");
 
-		doStuffEnemy(theEnemy);
+
 	}
 
 	
