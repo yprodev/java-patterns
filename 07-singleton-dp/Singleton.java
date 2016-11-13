@@ -24,8 +24,7 @@ public class Singleton {
 	// Creating Constructor
 	public Singleton(){  }
 
-	// It will force each thread to wait it's turn
-	public static synchronized Singleton getInstance() {
+	public static Singleton getInstance() {
 
 		if(firstInstance == null) {
 			if(firstThread) {
@@ -38,8 +37,18 @@ public class Singleton {
 				}
 
 			}
-			firstInstance = new Singleton();
-			Collections.shuffle(firstInstance.letterList);
+
+			// this is going to force it to be a synchronized method
+			// until the first object is created. And thereafter it is no
+			// longer to be considered.
+			synchronized(Singleton.class){
+
+				if(firstInstance == null) {
+					firstInstance = new Singleton();
+					Collections.shuffle(firstInstance.letterList);
+				}
+
+			}
 
 		}
 		return firstInstance;
