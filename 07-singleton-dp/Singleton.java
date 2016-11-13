@@ -24,14 +24,15 @@ public class Singleton {
 	// Creating Constructor
 	public Singleton(){  }
 
-	public static Singleton getInstance() {
+	// It will force each thread to wait it's turn
+	public static synchronized Singleton getInstance() {
 
 		if(firstInstance == null) {
 			if(firstThread) {
 				firstThread = false;
 				Thread.currentThread();
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(2000); // First thread sleeping
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
