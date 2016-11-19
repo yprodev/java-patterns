@@ -14,4 +14,10 @@ public class TurnItAllOff implements Command {
 		}
 	}
 
+	public void undo() {
+		for(ElectronicDevice device : theDevices) {
+			device.on();
+		}
+	}
+
 }

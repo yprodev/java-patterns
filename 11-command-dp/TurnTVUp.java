@@ -10,4 +10,9 @@ public class TurnTVUp implements Command {
 	public void execute() {
 		theDevice.volumeUp();
 	}
+
+	public void undo() {
+		theDevice.volumeDown();
+	}
+
 }

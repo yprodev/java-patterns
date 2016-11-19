@@ -11,4 +11,9 @@ public class DeviceButton {
 		// It does not know what device or command is being used
 		theCommand.execute();
 	}
+
+	public void pressUndo() {
+		theCommand.undo();
+	}
+
 }

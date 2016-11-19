@@ -10,4 +10,9 @@ public class TurnTVOff implements Command {
 	public void execute() {
 		theDevice.off();
 	}
+
+	public void undo() {
+		theDevice.on();
+	}
+
 }

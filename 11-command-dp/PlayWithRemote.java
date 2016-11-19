@@ -42,6 +42,11 @@ public class PlayWithRemote {
 		DeviceButton turnThemOff = new DeviceButton(turnOffDevices);
 		turnThemOff.press();
 
+		/**
+		 * --------------------------------------------
+		 */
+
+		turnThemOff.pressUndo();
 
 	}
 
