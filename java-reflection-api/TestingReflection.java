@@ -1,5 +1,8 @@
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Method;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 public class TestingReflection {
 
@@ -52,14 +55,83 @@ public class TestingReflection {
 			}
 
 			System.out.println();
-
-
-
-
-
-
-
 		}
+
+		/**
+		 * Accessing Class Constructor
+		 */
+
+		Constructor constructor = null;
+		Object constructor2 = null;
+
+		try {
+			constructor = reflectClass.getConstructor(new Class[]{EnemyShipFactory.class});
+			constructor2 = reflectClass.getConstructor(int.class, String.class).newInstance(12, "Random String");
+		} catch(NoSuchMethodExeption | SecurityException e) {
+			e.printStackTrace();
+		} catch(InstantiationException e) {
+			e.printStackTrace();
+		} catch(IllegalAccessException e) {
+			e.printStackTrace();
+		} catch(IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch(IllegalTargetException e) {
+			e.printStackTrace();
+		}
+
+		Class[] constructParameters = constructor.getParameterTypes();
+		for (Class paramter : constructParameters) {
+			System.out.println(parameter.getName());
+		}
+
+
+		UFOEnemyShip newEnemyShip = null;
+		EnemyShipFactory shipFactory = null;
+
+		try{
+			newEnemyShip = (UFOEnemyShip) constructor.newInstance(shipFactory);
+		} catch(InstantiationException | IllegalException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+
+		newEnemyShip.setName("XT-1000");
+		System.out.println("EnemyShip Name: " + newEnemyShip.getName());
+
+
+
+		Field privateStringName = null;
+		UFOEnemyShip enemyshipPrivate = new UFOEnemyShip(shipFactory);
+
+		try {
+			String idCodeString = "idcode";
+			privateStringName = UFOEnemyShip.class.getDeclatedField("idCode");
+			privateStringName.setAccessible(true);
+			try {
+				String valueOfName = (String) privateStringName.get(enemyshipPrivate);
+				System.out.println("Private Field Name: " + valueOfName);
+
+				String methodName = "getPrivate";
+				Method privateMethod = UFOEnemyShip.class.getDeclaredMethod(methodName, null);
+				privateMethod.setAccessible(true);
+				String privateReturnVal = (String) privateMethod.invoke(enemyshipPrivate, null);
+				System.out.println("EnemyShip private method: " + privateReturnVal);
+
+
+
+			} catch (IllegalArgumentException | IllegalAccessException) {
+				e.printStackTrace();
+			}
+
+		} catch(NoSuchFieldException | SecurityException e) {
+			e.printStackTrace();
+		}
+
+
+
+
+
+
+
 
 	}
 
