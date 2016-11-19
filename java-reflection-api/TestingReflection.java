@@ -116,7 +116,12 @@ public class TestingReflection {
 				String privateReturnVal = (String) privateMethod.invoke(enemyshipPrivate, null);
 				System.out.println("EnemyShip private method: " + privateReturnVal);
 
-
+				Class[] methodParameters = new Class[]{Integer.TYPE, String.class};
+				Object[] params = new Object[]{new Integer(10), new String("Random")};
+				privateMethod = UFOEnemyShip.class.getDeclaredMethod("getOtherPrivate", methodParameters)
+				privateMethod.setAccessible(true);
+				privateReturnVal = (String) privateMethod.invoke(enemyshipPrivate, params);
+				System.out.println("EnemyShip Other Private Method: " + privateReturnVal);
 
 			} catch (IllegalArgumentException | IllegalAccessException) {
 				e.printStackTrace();
