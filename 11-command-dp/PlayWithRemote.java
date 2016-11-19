@@ -22,12 +22,26 @@ public class PlayWithRemote {
 		 */
 
 		TurnTVUp volUpCommand = new TurnTVUp(newDevice);
+		DeviceButton upPressed = new DeviceButton(volUpCommand);
+		upPressed.press();
+		upPressed.press();
+		upPressed.press();
 
-		onPressed = new DeviceButton(volUpCommand);
+		/**
+		 * --------------------------------------------
+		 */
+	
+		Television theTV = new Television();
+		Radio theRadio = new Radio();
 
-		upPressed.press();
-		upPressed.press();
-		upPressed.press();
+		List<ElectronicDevice> allDevices = new ArrayList<ElectronicDevice>();
+		allDevices.add(theTV);
+		allDevices.add(theRadio);
+
+		TurnItAllOff turnOffDevices = new TurnItAllOff(allDevices);
+		DeviceButton turnThemOff = new DeviceButton(turnOffDevices);
+		turnThemOff.press();
+
 
 	}
 
