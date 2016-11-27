@@ -6,6 +6,6 @@ public class RadioStation {
 
 		DiscJockey madMike = new DiscJockey(songs70s, songs80s, songs90s);
 
-		madMike.showTheSongs();
+		madMike.showTheSongs2();
 	}
 }

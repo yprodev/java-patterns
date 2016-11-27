@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class SongsOfThe70s {
+public class SongsOfThe70s implements SongIterator {
 	ArrayList<SongInfo> bestSongs;
 
 	public SongsOfThe70s(){
@@ -16,8 +16,16 @@ public class SongsOfThe70s {
 		bestSongs.add(songInfo);
 	}
 
+	/*
 	public ArrayList<SongInfo> getBestSongs(){
 		return bestSongs;
+	}
+	*/
+
+	public Iterator createIterator() {
+		// Implementing a Common Interface - now we can use
+		// all the collections polimorphically
+		return bestSongs.iterator();
 	}
 
 

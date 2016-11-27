@@ -9,14 +9,19 @@ public class DiscJockey {
 	SongsOfThe80s songs80s;
 	SongsOfThe90s songs90s;
 
-	public DiscJockey(SongsOfThe70s newSongs70s,	SongsOfThe80s newSongs80s, SongsOfThe90s newSongs90s) {
+	SongIterator iter70sSongs;
+	SongIterator iter80sSongs;
+	SongIterator iter90sSongs;
 
-		songs70s = newSongs70s;
-		songs80s = newSongs80s;
-		songs90s = newSongs90s;
+	public DiscJockey(SongIterator newSongs70s,	SongIterator newSongs80s, SongIterator newSongs90s) {
+
+		iter70sSongs = newSongs70s;
+		iter80sSongs = newSongs80s;
+		iter90sSongs = newSongs90s;
 
 	}
 
+	/*
 	public void showTheSongs() {
 
 		ArrayList aL70sSongs = songs70s.getBestSongs();
@@ -55,6 +60,36 @@ public class DiscJockey {
 		}
 
 
+
+	}
+	*/
+
+	public void showTheSongs2() {
+		Iterator songs70s = iter70sSongs.createIterator();
+		Iterator songs80s = iter80sSongs.createIterator();
+		Iterator songs90s = iter90sSongs.createIterator();
+
+		System.out.println("Songs of the 70s\n");
+		printTheSongs(songs70s);
+
+		System.out.println("Songs of the 70s\n");
+		printTheSongs(songs80s);
+
+		System.out.println("Songs of the 70s\n");
+		printTheSongs(songs90s);
+
+	}
+
+	public void printTheSongs(Iterator iterator) {
+
+		while(iterator.hasNext()) {
+
+			SongInfo songInfo = (SongInfo) iterator.next();
+
+			System.out.println(songInfo.getSongName());
+			System.out.println(songInfo.getBandName());
+			System.out.println(songInfo.getYearReleased());
+		}
 
 	}
 

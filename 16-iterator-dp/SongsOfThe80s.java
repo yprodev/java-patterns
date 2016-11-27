@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class SongsOfThe80s {
+public class SongsOfThe80s implements SongIterator {
 
 	SongInfo[] bestSongs;
 
@@ -24,8 +24,14 @@ public class SongsOfThe80s {
 		arrayValue++;
 	}
 
+	/*
 	public SongInfo[] getBestSongs(){
 		return bestSongs;
 	}
+	*/
+
+	public Iterator createIterator() {
+		return Arrays.asList(bestSongs).iterator();
+	};
 
 }

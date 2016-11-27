@@ -1,7 +1,7 @@
 import java.util.Hashtable;
 import java.util.Iterator;
 
-public class SongsOfThe90s {
+public class SongsOfThe90s implements SongIterator {
 
 	Hashtable<Integer, SongInfo> bestSongs = new Hashtable<Integer, SongInfo>();
 
@@ -22,8 +22,14 @@ public class SongsOfThe90s {
 		hashKey++;
 	}
 
+	/*
 	public Hashtable<Integer, SongInfo> getBestSongs(){
 		return bestSongs;
+	}
+	*/
+
+	public Iterator createIterator() {
+		return bestSongs.values().iterator();
 	}
 
 }
