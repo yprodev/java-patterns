@@ -39,10 +39,9 @@ public class FlyWeightTest extends JFrame {
 				long startTime = System.currentTimeMillis();
 
 				for (int i = 0; i < 100000; ++i) {
-					// We are going to create unique object everytime
-					// to slow down this code dramatically
-					MyRect rect = new MyRect(getRandColor(), getRandX(), getRandY(), getRandX(), getRandY());
-					rect.draw(g);
+					// Using FlyWeight Design Pattern
+					MyRect rect = RectFactory.getRect(getRandColor());
+					rect.draw(g, getRandX(), getRandY(), getRandX(), getRandY());
 				}
 
 				long endTime = System.currentTimeMillis();
